@@ -1,0 +1,79 @@
+name: HTML/CSS Snapshot Testing
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm ci
+        npx playwright install --with-deps chromium
+
+    - name: Create snapshot and diff directories
+      run: mkdir -p snapshots/current snapshots/diff
+
+    - name: Generate current snapshot for index.html
+      run: |
+        npx playwright screenshot \
+          --browser=chromium \
+          --viewport-size=1440,960 \
+          --full-page \
+          "file://$PWD/index.html" \
+          "snapshots/current/current.png"
+
+    - name: Compare with reference.png using pixelmatch
+      run: |
+        node .github/scripts/compare-images.js \
+          ".github/snapshots/reference.png" \
+          "snapshots/current/current.png" \
+          "snapshots/diff/diff.png" \
+          0.1 \
+          0.8
+
+    - name: Set has_changes output
+      id: compare
+      run: |
+        echo "has_changes=$(cat snapshots/has_changes.txt)" >> $GITHUB_OUTPUT
+    
+    - name: Generate HTML report
+      if: always()
+      run: |
+        node .github/scripts/generate-report.js \
+          snapshots/has_changes.txt \
+          snapshots/current/current.png \
+          .github/snapshots/reference.png \
+          snapshots/diff/diff.png \
+          snapshots/report.html
+
+    - name: Upload snapshots as artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: snapshot-test-results
+        path: snapshots/
+        retention-days: 30
+
+    - name: Fail if visual changes detected
+      if: steps.compare.outputs.has_changes == 'true'
+      run: |
+        echo "Visual changes detected! Please review the diff image in the report."
+        exit 1
