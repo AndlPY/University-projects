@@ -50,6 +50,8 @@ Create the `students` table with the following columns and constraints.
 | `last_name` | `VARCHAR(100) NOT NULL` | Student last name |
 | `birth_date` | `DATE` | Student birth date |
 | `email` | `VARCHAR(150) UNIQUE` | Unique email address |
+| `city` | `VARCHAR(100)` | Student city |
+| `age` | `INTEGER CHECK (age >= 0)` | Student age |
 | `average_score` | `NUMERIC(5,2) CHECK (average_score >= 0 AND average_score <= 100)` | Average score from 0 to 100 |
 | `status` | `VARCHAR(30) DEFAULT 'Active'` | Default student status |
 
@@ -66,7 +68,7 @@ Create the `students` table with the following columns and constraints.
 1. Add at least 5 students.
 2. In two records, do not provide the `status` field so the `DEFAULT` value can be checked.
 3. Add at least one student with `average_score > 90`.
-4. Use realistic data: Ukrainian names, birth dates, and email addresses.
+4. Use realistic data: Ukrainian names, birth dates, cities, ages, and email addresses.
 5. Use an explicit list of columns in each `INSERT`.
 
 ### Part 3. Manipulate Data

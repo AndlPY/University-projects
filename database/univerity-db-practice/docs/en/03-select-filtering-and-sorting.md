@@ -42,19 +42,21 @@ Key elements:
 
 ## Input Data
 
-Use the `students` table.
+Use the `students` table from Practices 01-02.
 
 | Column | Description |
 | --- | --- |
 | `student_id` | Student identifier |
 | `first_name` | First name |
 | `last_name` | Last name |
+| `birth_date` | Student birth date |
+| `email` | Unique email address |
 | `city` | City |
 | `age` | Age |
 | `average_score` | Average score |
 | `phone_number` | Phone number, can be `NULL` |
-
-If the table does not yet include `city` and `age`, add them with `ALTER TABLE`.
+| `status` | Student status |
+| `group_name` | Text group name from the previous practices |
 
 ## Tasks
 

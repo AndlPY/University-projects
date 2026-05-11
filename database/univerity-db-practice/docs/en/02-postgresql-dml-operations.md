@@ -30,7 +30,9 @@
 
 ## Prerequisites
 
-Use the `students` table created in the previous practice. The table should include the `phone_number` and `group_name` columns added through `ALTER TABLE`.
+Use the `students` table created in the previous practice. It should already contain `city`, `age`, `phone_number`, and `group_name`.
+
+In this practice, changing a student's group means updating the text column `students.group_name`. The relational `group_id` column and the separate `student_groups` table are introduced in Practice 04.
 
 ## Tasks
 
@@ -38,7 +40,8 @@ Use the `students` table created in the previous practice. The table should incl
 
 1. Add 3 new students using safe syntax with an explicit list of columns.
 2. Perform a batch insert: add at least 2 records with a single query.
-3. Use `RETURNING student_id, first_name, last_name` after one insert.
+3. Fill `city`, `age`, and `group_name` for the inserted students so the next practices have enough data for filtering and grouping.
+4. Use `RETURNING student_id, first_name, last_name` after one insert.
 
 ### Part 2. `UPDATE`
 
@@ -84,7 +87,7 @@ Explain:
 
 - how `TRUNCATE` differs from `DELETE FROM students`;
 - why `RESTART IDENTITY` resets generated primary key values;
-- why this query should be executed only in a test database or after creating a backup.
+- why this query should be executed only in a test database, a copy of the table, or after the following practices are completed.
 
 ## Expected Result
 
