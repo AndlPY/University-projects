@@ -15,6 +15,15 @@ Projects focused on HTML, CSS, responsive layout, Flexbox, Grid, and basic JavaS
 | Blog Preview Card | A responsive blog card component based on a provided design system. | HTML, CSS | [Live demo](https://andlpy.github.io/blog-preview-card/) |
 | Article Preview Card | A desktop article card component with a share button interaction. | HTML, CSS, JavaScript | [Live demo](https://andlpy.github.io/University-projects/article-preview/) |
 
+### Databases
+
+Projects focused on relational database design, PostgreSQL scripts, SQL practice, data manipulation, joins, aggregation, and reporting queries.
+
+| Project | Description | Technologies | Documentation |
+|---|---|---|---|
+| Digital University Database | A PostgreSQL database project that models a university domain with schema design, seed data, migrations, and analytical queries. | PostgreSQL, SQL, DBeaver | [Project README](database/digital-university-db/README.md) |
+| University DB Practice | A six-part PostgreSQL practice set focused on direct SQL command usage and basic query mechanics. | PostgreSQL, SQL | [Practice README](database/univerity-db-practice/README.md) |
+
 ### Notes
 
 This repository is organized as an academic portfolio. Some projects are small coursework tasks, while others include more complete documentation, database design, or implementation details.
