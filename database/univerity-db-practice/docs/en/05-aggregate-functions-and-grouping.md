@@ -30,7 +30,9 @@
 
 ## Input Data
 
-Use the `students` and `student_groups` tables. To complete the tasks, `students` should contain `group_id` and `average_score`, while `student_groups` should contain `group_id` and `group_name`.
+Use the schema prepared in Practice 04. To complete the tasks, `students` should contain `group_id`, `average_score`, and `status`, while `student_groups` should contain `group_id` and `group_name`.
+
+Use `students.group_id` for grouping and joins; `students.group_name` is kept only as an earlier text value.
 
 ## Tasks
 

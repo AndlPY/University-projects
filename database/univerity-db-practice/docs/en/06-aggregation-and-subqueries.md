@@ -69,6 +69,16 @@ WHERE average_score > (
 - `WITH` can be used for common table expressions when a query becomes hard to read.
 - `CASE` can convert score ranges into labels such as ECTS grades.
 
+## Input Data
+
+Use the schema prepared in Practice 04:
+
+- `students.group_id` connects each student to `student_groups.group_id`;
+- `student_groups.group_name` stores values such as `KB-21`;
+- `students.average_score` is used for aggregate and comparison tasks.
+
+Use the normalized relationship `students.group_id -> student_groups.group_id` for the subquery tasks.
+
 ## Tasks
 
 ### Part 1. Aggregate Functions

@@ -35,6 +35,18 @@ JOIN table2 AS t2
 
 PostgreSQL checks foreign keys by default. If a `JOIN` does not return expected rows, inspect the key values in both tables before changing the query.
 
+## Prerequisites
+
+Continue from Practice 03. The previous practices used the text column `students.group_name`. For joins, normalize that value into separate tables and connect students through `group_id`.
+
+Before writing `JOIN` queries, prepare the related tables:
+
+1. Create `faculties` with `faculty_id` as the primary key and `faculty_name` as a required unique name.
+2. Create `student_groups` with `group_id` as the primary key, `group_name` as a required unique name, and `faculty_id` as a foreign key to `faculties`.
+3. Add nullable `group_id` to `students` as a foreign key to `student_groups`.
+4. Insert at least 2 faculties and at least 3 student groups. Include a `Computer Science` faculty, a `KB-21` group, and one group without assigned students.
+5. Update existing students so most `group_id` values match the group names used in `students.group_name`. Leave at least one student with `group_id = NULL` to demonstrate `LEFT JOIN`.
+
 ## Input Tables
 
 ### `students`
@@ -45,6 +57,8 @@ PostgreSQL checks foreign keys by default. If a `JOIN` does not return expected 
 | `first_name` | First name |
 | `last_name` | Last name |
 | `group_id` | Group identifier |
+
+The older text column `students.group_name` can remain in the table, but the join queries in this practice should use `students.group_id`.
 
 ### `student_groups`
 
@@ -83,7 +97,7 @@ INNER JOIN student_groups AS g
 ### Part 2. `LEFT JOIN`
 
 1. Display all students and their groups, including students without a group.
-2. Find students whose matching group record is missing.
+2. Find students whose `group_id` is `NULL`.
 
 ### Part 3. Joining Three Tables
 
